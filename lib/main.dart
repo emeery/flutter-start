@@ -1,36 +1,52 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
-
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  void processTheQuestion() {
-    print('imprime una respuesta');
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    print(_questionIndex);
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    const questions = ['Tu comida fav', 'tu color fav'];
+  Widget build(BuildContext contextData) {
+    var question = [
+      'Who is your favourite teacher?',
+      'which is your favourite color?'
+    ];
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('App_First'),
-        ), // AppBar
-        body: Column(
-          children: [
-            Text('responde la pregunta'),
-            RaisedButton(
-              child: Text('Respuesta 1'),
-              onPressed: () {
-                processTheQuestion();
-              },
-            ),
-          ],
-        ),
-      ), // Scaffold
-    ); // MaterialApp
+        home: Scaffold(
+      appBar: AppBar(
+        title: Text('My flutter App'),
+      ),
+      body: Column(
+        children: [
+          Text(question[_questionIndex]),
+          RaisedButton(
+            child: Text('Question1'),
+            onPressed: (_answerQuestion),
+          ),
+          RaisedButton(
+            child: Text('Question2'),
+            onPressed: (_answerQuestion),
+          ),
+          RaisedButton(
+            child: Text('Question3'),
+            onPressed: (_answerQuestion),
+          ),
+        ],
+      ),
+    ));
   }
 }
