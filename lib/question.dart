@@ -8,9 +8,13 @@ class Question extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print("The number is $question");
-    return Text(
-      question,
-      style: TextStyle(fontSize: 28, foreground: Paint()..color = Colors.blue),
+    return Container(
+      width: double.infinity,
+      child: Text(
+        question,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 28),
+      ),
     );
   }
 }
