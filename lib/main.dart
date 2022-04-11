@@ -23,34 +23,59 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext contextData) {
     var question = [
+      'Color favorito?',
       'Who is your favourite teacher?',
-      'which is your favourite color?',
-      'wich is your favirute food'
+      'wich is your favorite food'
     ];
     return MaterialApp(
+        // theme: ThemeData(appBarTheme: AppBarTheme(color: const Color(283747),),
+        theme: ThemeData(
+          colorScheme: ColorScheme(
+            brightness: Brightness.light,
+            primary: Color.fromARGB(255, 49, 67, 90),
+            onPrimary: Colors.white,
+            // Colors that are not relevant to AppBar in LIGHT mode:
+            primaryVariant: Colors.grey,
+            secondary: Colors.grey,
+            secondaryVariant: Colors.grey,
+            onSecondary: Colors.grey,
+            background: Colors.grey,
+            onBackground: Colors.grey,
+            surface: Colors.grey,
+            onSurface: Colors.grey,
+            error: Colors.grey,
+            onError: Colors.grey,
+          ),
+        ),
         home: Scaffold(
-      appBar: AppBar(
-        title: Text('My flutter App'),
-      ),
-      body: Column(
-        children: [
-          Question(
-            question[_questionIndex],
+          appBar: AppBar(
+            title: Text('My flutter App'),
           ),
-          RaisedButton(
-            child: Text('Question1'),
-            onPressed: (_answerQuestion),
+          body: Column(
+            children: [
+              Question(
+                question[_questionIndex],
+              ),
+              ElevatedButton(
+                child: Text('Question1'),
+                style: ElevatedButton.styleFrom(primary: Colors.indigo),
+                onPressed: (_answerQuestion),
+              ),
+              SizedBox(height: 5),
+              ElevatedButton(
+                child: Text('Question2'),
+                style: ElevatedButton.styleFrom(primary: Colors.lightBlue),
+                onPressed: (_answerQuestion),
+              ),
+              SizedBox(height: 5),
+              ElevatedButton(
+                child: Text('Question3'),
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 100, 117, 218)),
+                onPressed: (_answerQuestion),
+              ),
+            ],
           ),
-          RaisedButton(
-            child: Text('Question2'),
-            onPressed: (_answerQuestion),
-          ),
-          RaisedButton(
-            child: Text('Question3'),
-            onPressed: (_answerQuestion),
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 }

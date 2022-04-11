@@ -10,6 +10,7 @@ class Question extends StatelessWidget {
     // print("The number is $question");
     return Container(
       width: double.infinity,
+      margin: EdgeInsets.all(10),
       child: Text(
         question,
         textAlign: TextAlign.center,
