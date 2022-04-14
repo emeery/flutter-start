@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
+import 'answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,10 +16,10 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
   void _answerQuestion() {
-    print(_questionIndex);
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
+    print(_questionIndex);
   }
 
   Widget build(BuildContext contextData) {
@@ -35,9 +36,7 @@ class _MyAppState extends State<MyApp> {
             primary: Color.fromARGB(255, 49, 67, 90),
             onPrimary: Colors.white,
             // Colors that are not relevant to AppBar in LIGHT mode:
-            primaryVariant: Colors.grey,
             secondary: Colors.grey,
-            secondaryVariant: Colors.grey,
             onSecondary: Colors.grey,
             background: Colors.grey,
             onBackground: Colors.grey,
@@ -56,24 +55,12 @@ class _MyAppState extends State<MyApp> {
               Question(
                 question[_questionIndex],
               ),
-              ElevatedButton(
-                child: Text('Question1'),
-                style: ElevatedButton.styleFrom(primary: Colors.indigo),
-                onPressed: (_answerQuestion),
-              ),
               SizedBox(height: 5),
-              ElevatedButton(
-                child: Text('Question2'),
-                style: ElevatedButton.styleFrom(primary: Colors.lightBlue),
-                onPressed: (_answerQuestion),
-              ),
+              Answer(_answerQuestion),
               SizedBox(height: 5),
-              ElevatedButton(
-                child: Text('Question3'),
-                style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 100, 117, 218)),
-                onPressed: (_answerQuestion),
-              ),
+              // Answer(),
+              SizedBox(height: 5),
+              // Answer()
             ],
           ),
         ));
