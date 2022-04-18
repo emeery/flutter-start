@@ -15,6 +15,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
+  // print(_questionIndex);
+
   void _answerQuestion() {
     setState(() {
       _questionIndex = _questionIndex + 1;
@@ -22,15 +24,28 @@ class _MyAppState extends State<MyApp> {
     print(_questionIndex);
   }
 
-  Widget build(BuildContext contextData) {
-    var question = [
-      'Color favorito?',
-      'Who is your favourite teacher?',
-      'wich is your favorite food'
+  void _testList() {
+    // print("The number is $_questionIndex");
+    print("the test works");
+    // {question: Color favorito?, answers: [Negro, Azul, Verde]}
+  }
+
+  Widget build(BuildContext context) {
+    const questions = [
+      {
+        'question': 'Color fav oie?',
+        'answer': ['Negro', 'Azul', 'Verde']
+      },
+      {
+        'question': 'Jugador favorito?',
+        'answer': ['Cristiano', 'Messi', 'Neymar']
+      }
     ];
     return MaterialApp(
+
         // theme: ThemeData(appBarTheme: AppBarTheme(color: const Color(283747),),
         theme: ThemeData(
+          scaffoldBackgroundColor: Color(0xff123456),
           colorScheme: ColorScheme(
             brightness: Brightness.light,
             primary: Color.fromARGB(255, 49, 67, 90),
@@ -48,19 +63,25 @@ class _MyAppState extends State<MyApp> {
         ),
         home: Scaffold(
           appBar: AppBar(
-            title: Text('My flutter App'),
+            title: Text(
+              'CUESTIONES APP',
+              style: TextStyle(
+                fontFamily: 'Akshar',
+                color: Colors.teal,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
           body: Column(
             children: [
               Question(
-                question[_questionIndex],
+                questions[_questionIndex]['question'] as String,
               ),
+              ...(questions[_questionIndex]['answer'] as List<String>)
+                  .map((ans) {
+                return Answer(_answerQuestion, ans);
+              }).toList(),
               SizedBox(height: 5),
-              Answer(_answerQuestion),
-              SizedBox(height: 5),
-              // Answer(),
-              SizedBox(height: 5),
-              // Answer()
             ],
           ),
         ));
