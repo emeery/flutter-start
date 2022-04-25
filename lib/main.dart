@@ -14,10 +14,25 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  final questions = [
+    {
+      'question': 'Color fav oie?',
+      'answer': ['Negro', 'Azul', 'Verde']
+    },
+    {
+      'question': 'Jugador favorito?',
+      'answer': ['Cristiano', 'Messi', 'Neymar']
+    }
+  ];
 
   // print(_questionIndex);
 
   void _answerQuestion() {
+    if (_questionIndex == questions.length) {
+      print('cayo aqi');
+    } else {
+      print('cayo aca');
+    }
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -31,16 +46,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget build(BuildContext context) {
-    const questions = [
-      {
-        'question': 'Color fav oie?',
-        'answer': ['Negro', 'Azul', 'Verde']
-      },
-      {
-        'question': 'Jugador favorito?',
-        'answer': ['Cristiano', 'Messi', 'Neymar']
-      }
-    ];
     return MaterialApp(
 
         // theme: ThemeData(appBarTheme: AppBarTheme(color: const Color(283747),),
