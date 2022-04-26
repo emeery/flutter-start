@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quiz.dart';
 import 'question.dart';
 import 'answer.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  final questions = [
+  final _questions = [
     {
       'question': 'Color fav oie?',
       'answer': ['Negro', 'Azul', 'Verde']
@@ -25,10 +26,9 @@ class _MyAppState extends State<MyApp> {
     }
   ];
 
-  // print(_questionIndex);
 
   void _answerQuestion() {
-    if (_questionIndex == questions.length) {
+    if (_questionIndex == _questions.length) {
       print('cayo aqi');
     } else {
       print('cayo aca');
@@ -77,18 +77,7 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
           ),
-          body: Column(
-            children: [
-              Question(
-                questions[_questionIndex]['question'] as String,
-              ),
-              ...(questions[_questionIndex]['answer'] as List<String>)
-                  .map((ans) {
-                return Answer(_answerQuestion, ans);
-              }).toList(),
-              SizedBox(height: 5),
-            ],
-          ),
+          body: _questionIndex < _questions.length ? Quiz(_answerQuestion _questions) : Center(child: Text('Perfecto!'))
         ));
   }
 }
