@@ -7,10 +7,12 @@ class Quiz extends StatelessWidget {
   final int questionIndex;
   final VoidCallback answerQuestion;
 
-  Quiz(
-      {required this.questions,
+  const Quiz(
+      {Key? key,
+      required this.questions,
       required this.questionIndex,
-      required this.answerQuestion});
+      required this.answerQuestion})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +21,7 @@ class Quiz extends StatelessWidget {
           questions[questionIndex]['question'] as String,
         ),
         ...(questions[questionIndex]['answer'] as List<String>).map((ans) {
-          return Answer(answerQuestion, ans);
+          return Answer(selectHandler: answerQuestion, answerText: ans);
         }).toList(),
         SizedBox(height: 5),
       ],

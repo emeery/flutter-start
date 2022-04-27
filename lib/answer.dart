@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class Answer extends StatelessWidget {
   final VoidCallback selectHandler;
   final String answerText;
-  Answer(this.selectHandler, this.answerText);
-  // const Answer({Key? key, this.selectHandler, this.answerText}) : super(key: key);
+
+  // const Answer(this.selectHandler, this.answerText);
+  const Answer(
+      {Key? key, required this.selectHandler, required this.answerText})
+      : super(key: key);
 
   Widget build(BuildContext context) {
     return Container(
