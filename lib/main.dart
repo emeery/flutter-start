@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'quiz.dart';
+import 'result.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            'CUESTIONES APP',
+            'EL QUIZ APP',
             style: TextStyle(
               fontFamily: 'Akshar',
               color: Colors.teal,
@@ -83,12 +83,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion)
-            : Center(
-                child: Text(
-                  'Gracias por tus respuestas!',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+            : Result(),
       ),
     );
   }
